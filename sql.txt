@@ -1,0 +1,37 @@
+create database student_examination_sys;
+use student_examination_sys;
+
+create table student(
+	id int(3) zerofill NOT NULL auto_increment,
+	name varchar(20) NOT NULL,
+	age int(3) NOT NULL,
+	sex enum('male', 'female') default 'male',
+	primary key (id))ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+	
+insert into student(name,age,sex) 
+values('zhangsan', 18, 'male')
+('lisi', 20, 'female');
+	
+create table subject(
+	id int(11) NOT NULL,
+	subject_name varchar(25) NOT NULL,
+	teacher_name varchar(25) NOT NULL,
+	description varchar(150) NOT NULL,
+	primary key (id))ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
+	
+insert into subject(id, subject_name, teacher_name, description) 
+values(1001, 'Chinese','Mr.Wang', 'the exam is easy'),
+(1002, 'Math','Miss Liu', 'the exam is difficult');
+	
+create table score(
+	id int(11) NOT NULL auto_increment,
+	student_id int(3) zerofill NOT NULL,
+	subject_id int(11) NOT NULL,
+	score decimal(3,1) default '0' NOT NULL, 
+	primary key(id))ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+	
+insert into score(student_id,subject_id,score)
+values(1, 1001, 80),
+(2, 1002, 60),
+(1, 1001, 70),
+(2, 1002, 60.5);
